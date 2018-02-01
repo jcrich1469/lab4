@@ -6,7 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
 
 var index = require('./routes/index');
 var hello = require('./routes/hello');
@@ -14,6 +14,17 @@ var hello = require('./routes/hello');
 // var user = require('./routes/user');
 
 var app = express();
+
+
+
+//importing extra routes
+var index = require('./routes/index');
+var project = require('./routes/project');
+//routing
+app.get('/', index.view);
+app.get('/project', project.viewProject);
+app.get('/project/:name', project.viewProject);
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
